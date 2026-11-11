@@ -1,0 +1,8 @@
+{
+  "name": "Remix Văn Nghị Luận Lab",
+  "description": "Nền tảng học tập số môn Ngữ Văn dành cho học sinh THPT: luyện viết nghị luận xã hội, tra cứu 100 đề bài, dàn ý chi tiết và kho dẫn chứng đa chiều.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

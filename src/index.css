@@ -1,0 +1,391 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Lora', 'Merriweather', 'Times New Roman', Times, serif;
+}
+
+@layer base {
+  :root {
+    --bg-paper: #F6F0E4;
+    --bg-paper-sub: #EFE4D0;
+    --bg-paper-card: #FAF6EE;
+    --color-wine: #7A263A;
+    --color-wine-dark: #5C1826;
+    --color-charcoal: #29241F;
+    --color-sub: #847768;
+    --border-paper: #D9C9AE;
+  }
+
+  .dark {
+    --bg-paper: #12131A;
+    --bg-paper-sub: #171924;
+    --bg-paper-card: #1D2030;
+    --color-wine: #F59E0B;
+    --color-wine-dark: #D97706;
+    --color-charcoal: #F8FAFC;
+    --color-sub: #CBD5E1;
+    --border-paper: #3B4B68;
+  }
+
+  html {
+    /* Flawless Vietnamese 5-tone diacritics rendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures;
+    font-kerning: normal;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-paper);
+    color: var(--color-charcoal);
+    line-height: 1.65;
+    transition: background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Universal Dark Mode Guarantee */
+  .dark body {
+    background-color: #12131A !important;
+    color: #F8FAFC !important;
+  }
+
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: #1A1D2B !important;
+    color: #F8FAFC !important;
+    border-color: #38455E !important;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: #94A3B8 !important;
+  }
+
+  /* Automatic Dark Mode normalization for cards, borders and texts */
+  .dark .bg-\[\#F6F0E4\] { background-color: #12131A !important; }
+  .dark .bg-\[\#161412\] { background-color: #12131A !important; }
+  .dark .bg-\[\#1C1917\] { background-color: #171924 !important; }
+  .dark .bg-\[\#FAF6EE\] { background-color: #1C2030 !important; }
+  .dark .bg-\[\#25201C\] { background-color: #1C2030 !important; }
+  .dark .bg-\[\#EFE4D0\] { background-color: #242A3D !important; }
+  .dark .bg-\[\#EFE4D0\]\/70 { background-color: rgba(36, 42, 61, 0.7) !important; }
+  .dark .bg-\[\#EFE4D0\]\/60 { background-color: rgba(36, 42, 61, 0.6) !important; }
+
+  /* Crisp light blue / soft luminous white borders in Dark Mode to banish gloom */
+  .dark .border-\[\#D9C9AE\] { border-color: rgba(147, 197, 253, 0.32) !important; }
+  .dark .border-\[\#D9C9AE\]\/70 { border-color: rgba(147, 197, 253, 0.28) !important; }
+  .dark .border-\[\#D9C9AE\]\/60 { border-color: rgba(147, 197, 253, 0.24) !important; }
+  .dark .border-\[\#D9C9AE\]\/50 { border-color: rgba(147, 197, 253, 0.20) !important; }
+  .dark .border-\[\#D9C9AE\]\/40 { border-color: rgba(147, 197, 253, 0.16) !important; }
+  .dark .border-\[\#D9C9AE\]\/30 { border-color: rgba(147, 197, 253, 0.12) !important; }
+  .dark .border-\[\#3D352D\] { border-color: rgba(147, 197, 253, 0.32) !important; }
+  .dark .border-\[\#4A4036\] { border-color: rgba(147, 197, 253, 0.38) !important; }
+  .dark .border-\[\#2E2E2E\] { border-color: rgba(147, 197, 253, 0.30) !important; }
+  .dark .border-\[\#2A2A2A\] { border-color: rgba(147, 197, 253, 0.30) !important; }
+
+  .dark .text-\[\#29241F\] { color: #F8FAFC !important; }
+  .dark .text-\[\#F5EFEB\] { color: #FFFFFF !important; }
+  .dark .text-\[\#F6F0E4\] { color: #F8FAFC !important; }
+  .dark .text-\[\#847768\] { color: #CBD5E1 !important; }
+  .dark .text-\[\#A89B8E\] { color: #E2E8F0 !important; }
+  .dark .text-\[\#554C42\] { color: #CBD5E1 !important; }
+  .dark .text-\[\#D9C9AE\] { color: #E2E8F0 !important; }
+
+  .dark .text-\[\#7A263A\] { color: #D2516B !important; }
+  .dark .text-\[\#C24A64\] { color: #D2516B !important; }
+  .dark .text-\[\#B3445C\] { color: #D2516B !important; }
+  .dark .bg-\[\#7A263A\] { background-color: #D2516B !important; }
+  .dark .bg-\[\#C24A64\] { background-color: #D2516B !important; }
+
+  h1, h2, h3, h4, h5, h6, .font-serif, .font-literary {
+    font-family: var(--font-serif);
+    line-height: 1.45;
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+}
+
+/* Synchronized 250ms–350ms smooth transition when switching between Light and Dark mode */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              fill 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              stroke 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Dynamic Font Size and Line Height settings for comfortable reading */
+html[data-font-size="medium"] body {
+  font-size: 1.0625rem;
+}
+html[data-font-size="large"] body {
+  font-size: 1.15rem;
+}
+html[data-line-height="relaxed"] body {
+  line-height: 1.85;
+}
+html[data-line-height="relaxed"] p {
+  line-height: 1.95;
+}
+
+/* Reduced motion preference */
+html.reduce-motion * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Apple-style keyframe animations */
+@keyframes appleFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-apple-in {
+  animation: appleFadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-apple-fade {
+  animation: appleFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sun / Moon Apple micro-interactions */
+@keyframes sunSpin {
+  0% { transform: rotate(-45deg) scale(0.85); opacity: 0.5; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes moonRock {
+  0% { transform: rotate(-25deg) scale(0.85); opacity: 0.5; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+.animate-sun {
+  animation: sunSpin 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-moon {
+  animation: moonRock 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =========================================================================
+   LIGHT MODE: SUBTLE LITERARY / BOOK / BOTANICAL WATERMARK PATTERN
+   ========================================================================= */
+/* In Light Mode, card containers get an exquisite subtle watermark of book pages & floral vine */
+.apple-card,
+.apple-glow-card {
+  position: relative;
+  background-image: radial-gradient(circle at 100% 100%, rgba(122, 38, 58, 0.025) 0%, transparent 40%),
+                    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.035'%3E%3Cpath d='M10 20C18 16 26 16 34 20L34 38C26 34 18 34 10 38Z' stroke='%237A263A' stroke-width='0.8'/%3E%3Cpath d='M34 20C42 16 50 16 58 20L58 38C50 34 42 34 34 38Z' stroke='%237A263A' stroke-width='0.8'/%3E%3Cpath d='M65 55C68 50 74 48 76 52C78 56 72 62 67 60C62 58 62 52 65 55Z' fill='%237A263A'/%3E%3Cpath d='M66 59Q70 65 74 72' stroke='%237A263A' stroke-width='0.6' stroke-linecap='round'/%3E%3Cpath d='M20 62C24 60 28 62 30 66C26 68 22 66 20 62Z' stroke='%237A263A' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: auto, 80px 80px;
+}
+
+.dark .apple-card,
+.dark .apple-glow-card {
+  background-image: none !important;
+}
+
+/* =========================================================================
+   HOVER EFFECTS: RADIANT GOLDEN HALO (BỪNG SÁNG & TỎA HÀO QUANG ÁNH VÀNG)
+   ========================================================================= */
+
+/* 1. Universal Card Hover */
+.apple-card {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.apple-card:hover {
+  transform: scale(1.025) translateY(-3px);
+  border-color: rgba(245, 158, 11, 0.75) !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.35),
+              0 12px 28px -6px rgba(122, 38, 58, 0.12) !important;
+}
+.dark .apple-card:hover {
+  transform: scale(1.03) translateY(-3px);
+  background-color: #222738 !important;
+  border-color: #FBBF24 !important;
+  box-shadow: 0 0 22px rgba(251, 191, 36, 0.55),
+              0 0 45px rgba(245, 158, 11, 0.30),
+              0 0 70px rgba(217, 119, 6, 0.15),
+              inset 0 0 16px rgba(251, 191, 36, 0.12),
+              0 18px 36px -8px rgba(0, 0, 0, 0.85) !important;
+}
+.apple-card:active {
+  transform: scale(0.985);
+}
+
+/* 2. Primary Glowing Interactive Cards (Tất cả các ô mục kho đề, chức năng, dẫn chứng...) */
+.apple-glow-card {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 320ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.apple-glow-card:hover {
+  transform: scale(1.028) translateY(-3px);
+  border-color: rgba(245, 158, 11, 0.85) !important;
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.40),
+              0 0 48px rgba(251, 191, 36, 0.20),
+              0 16px 32px -8px rgba(0, 0, 0, 0.10) !important;
+}
+.dark .apple-glow-card:hover {
+  transform: scale(1.035) translateY(-4px);
+  background-color: #23283B !important;
+  border-color: #FCD34D !important;
+  box-shadow: 0 0 26px rgba(252, 211, 77, 0.65),
+              0 0 55px rgba(245, 158, 11, 0.38),
+              0 0 85px rgba(217, 119, 6, 0.20),
+              inset 0 0 18px rgba(252, 211, 77, 0.15),
+              0 22px 42px -8px rgba(0, 0, 0, 0.9) !important;
+}
+.apple-glow-card:active {
+  transform: scale(0.985);
+}
+
+/* 3. Text Glow for Titles & Headings in Dark Mode & Light Mode */
+.glow-text-title {
+  transition: text-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.apple-glow-card:hover .glow-text-title,
+.group:hover .glow-text-title,
+.glow-text-title:hover {
+  color: #7A263A;
+  text-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
+}
+.dark .apple-glow-card:hover .glow-text-title,
+.dark .group:hover .glow-text-title,
+.dark .glow-text-title:hover {
+  color: #FFFBEB !important;
+  text-shadow: 0 0 12px rgba(254, 243, 199, 0.85),
+               0 0 24px rgba(251, 191, 36, 0.65),
+               0 0 40px rgba(245, 158, 11, 0.35) !important;
+}
+
+/* 4. Text Glow for Subtitles, Quotes & Body Snippets */
+.glow-text-sub {
+  transition: text-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .apple-glow-card:hover .glow-text-sub,
+.dark .group:hover .glow-text-sub,
+.dark .glow-text-sub:hover {
+  color: #F8FAFC !important;
+  text-shadow: 0 0 10px rgba(248, 250, 252, 0.45) !important;
+}
+
+/* 5. Glowing Action Buttons (Buttons bừng sáng với hào quang vàng ấm) */
+.apple-glow-btn {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.apple-glow-btn:hover {
+  transform: scale(1.04) translateY(-1px);
+  border-color: rgba(245, 158, 11, 0.8) !important;
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.4) !important;
+}
+.dark .apple-glow-btn:hover {
+  transform: scale(1.045) translateY(-1px);
+  border-color: #FCD34D !important;
+  box-shadow: 0 0 20px rgba(252, 211, 77, 0.6),
+              0 0 35px rgba(245, 158, 11, 0.3) !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+               0 0 20px rgba(251, 191, 36, 0.5) !important;
+}
+.apple-glow-btn:active {
+  transform: scale(0.96);
+}
+
+/* 6. Glowing Category / Tag Pills */
+.apple-glow-pill {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.apple-glow-pill:hover {
+  transform: scale(1.05);
+  border-color: rgba(245, 158, 11, 0.8) !important;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35) !important;
+}
+.dark .apple-glow-pill:hover {
+  transform: scale(1.06);
+  border-color: #FCD34D !important;
+  box-shadow: 0 0 18px rgba(252, 211, 77, 0.6),
+              inset 0 0 10px rgba(252, 211, 77, 0.2) !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6) !important;
+}
+.apple-glow-pill:active {
+  transform: scale(0.96);
+}
+
+/* 7. Apple Dark Hover illumination for cards & lists */
+.dark .hover\:bg-white:hover {
+  background-color: #242A3D !important;
+}
+
+.dark .hover\:border-\[\#7A263A\]\/40:hover {
+  border-color: #FCD34D !important;
+  box-shadow: 0 0 22px rgba(252, 211, 77, 0.5) !important;
+}
+
+
+/* Custom subtle paper texture & scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-paper-sub);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4B59D;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #5A4E42;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wine);
+}
